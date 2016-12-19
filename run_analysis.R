@@ -101,6 +101,6 @@ merged_data <- rbind(test_data, train_data)
 # Final Steps
 groupby_data <- merged_data %>% select(-type, -activityId) %>% group_by(subject, activity)
 mean_colnames <- names(select(merged_data, -subject, -activity, -type, -activityId))
-result <- result <- groupby_data %>% summarise_each(funs(mean))
+result <- groupby_data %>% summarise_each(funs(mean))
 
-write.table(result, "tidyMeans.txt", row.names = FALSE)
+write.table(result, "tidyResult.txt", row.names = FALSE)
