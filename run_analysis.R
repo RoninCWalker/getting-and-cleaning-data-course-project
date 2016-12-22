@@ -103,4 +103,7 @@ groupby_data <- merged_data %>% select(-type, -activityId) %>% group_by(subject,
 mean_colnames <- names(select(merged_data, -subject, -activity, -type, -activityId))
 result <- groupby_data %>% summarise_each(funs(mean))
 
+# rename the columns
+names(result)[3:81] <- paste("MEAN", colnames(result)[3:81], sep="-")
+
 write.table(result, "tidyResult.txt", row.names = FALSE)
